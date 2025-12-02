@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame Conversion Operator Manual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .container {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-xl container">
+        
+        <header class="pb-6 border-b border-gray-200">
+            <h1 class="text-3xl font-bold text-gray-800">Frame Conversion Operator</h1>
+            <p class="text-lg text-gray-500 mt-1">User Manual & Processing Guide</p>
+        </header>
+
+        <section id="introduction" class="mt-8">
+            <h2 class="text-2xl font-semibold text-gray-700 border-l-4 border-indigo-500 pl-3 mb-4">1. Introduction</h2>
+            <p class="text-gray-600 mb-4">
+                The Frame Conversion Operator is a Python-based GUI application designed to combine multiple sequential frames—sourced from videos, animated GIFs, or image sequences—into a single, static image. This process, often called computational photography, allows you to create specialized effects like long exposures and object removal.
+            </p>
+            <p class="text-gray-600">
+                The application supports four different processing modes to achieve distinct visual results.
+            </p>
+        </section>
+
+        <section id="prerequisites" class="mt-8">
+            <h2 class="text-2xl font-semibold text-gray-700 border-l-4 border-indigo-500 pl-3 mb-4">2. Requirements & Setup</h2>
+            <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
+                <li>**Python:** The application requires Python 3.x installed on your system.</li>
+                <li>**Libraries:** You must have the following libraries installed:
+                    <code class="block mt-2 p-2 bg-gray-100 rounded text-sm text-gray-700">pip install opencv-python numpy pillow</code>
+                <li> or you can just use as </li>
+					<code class="block mt-2 p-2 bg-gray-100 rounded text-sm text-gray-700">pip install -r requirements.txt</code>
+				</li>
+                <li>**GUI:** The application uses `tkinter`, which is typically included with standard Python installations.</li>
+            </ul>
+        </section>
+
+        <section id="interface" class="mt-8">
+            <h2 class="text-2xl font-semibold text-gray-700 border-l-4 border-indigo-500 pl-3 mb-4">3. Interface Overview</h2>
+            
+            <div class="space-y-4 text-gray-600">
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-gray-700">Input Selection</h3>
+                    <p class="text-sm">Use **Browse** to select one file (Video/GIF) or multiple image files (`.jpg`, `.png`, etc.). The application automatically detects the input type.</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-gray-700">Output Image</h3>
+                    <p class="text-sm">Use **Save As** to specify the file path and format (e.g., `result.png`) for the final processed image.</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-gray-700">Frame Skip</h3>
+                    <p class="text-sm">A value greater than 1 tells the program to skip frames (e.g., skip=5 means only process 1 out of every 5 frames). Higher values result in **faster processing** but may slightly **reduce quality**.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="modes" class="mt-8">
+            <h2 class="text-2xl font-semibold text-gray-700 border-l-4 border-indigo-500 pl-3 mb-4">4. Processing Modes Explained</h2>
+				<div>
+					<h3> Inputs </h3>
+						<li>Nuriho Launching Video, 27th Nov, 2025</li>
+							<video width="400" height="300" controls>
+								<source src="ex/Nuri.MOV#t=12"  type="video/mp4">
+							</video>
+						<li>Car Passing Gif, google source </li>
+							<img src="ex/carcross.gif" />
+				</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+							
+                <!-- Average Mode -->
+                <div class="p-5 bg-green-50 rounded-lg border border-green-200">
+                    <h3 class="text-xl font-semibold text-green-700 mb-2">Average</h3>
+                    <p class="text-sm text-gray-700">
+                        Calculates the mathematical **average** of the color value for every pixel across all processed frames.
+                    </p>
+                    <ul class="list-disc list-inside text-sm text-gray-600 mt-3 ml-2">
+                        <li>**Effect:** Standard long exposure; creates a silky, blurred effect on moving objects (waterfalls, clouds).</li>
+                        <li>**Memory:** Low consumption (processes frames incrementally).</li>
+						<img src="ex/Avg.png" />
+                    </ul>
+                </div>
+
+                <!-- Brightest Mode -->
+                <div class="p-5 bg-yellow-50 rounded-lg border border-yellow-200">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Brightest</h3>
+                    <p class="text-sm text-gray-700">
+                        For each pixel location, it keeps the **highest (brightest)** color value recorded across all frames.
+                    </p>
+                    <ul class="list-disc list-inside text-sm text-gray-600 mt-3 ml-2">
+                        <li>**Effect:** Captures light trails (cars, stars, fireworks) against a dark background.</li>
+                        <li>**Memory:** Low consumption (processes frames incrementally).</li>
+												
+						<img src="ex/Brightest.png" />
+                    </ul>
+                </div>
+
+                <!-- Darkest Mode -->
+                <div class="p-5 bg-red-50 rounded-lg border border-red-200">
+                    <h3 class="text-xl font-semibold text-red-700 mb-2">Darkest</h3>
+                    <p class="text-sm text-gray-700">
+                        For each pixel location, it keeps the **lowest (darkest)** color value recorded across all frames.
+                    </p>
+                    <ul class="list-disc list-inside text-sm text-gray-600 mt-3 ml-2">
+                        <li>**Effect:** Useful for removing bright, temporary flashes of light. Can deepen shadows.</li>
+                        <li>**Memory:** Low consumption (processes frames incrementally).</li>
+						<img src="ex/darkest.png" />
+					</ul>
+                </div>
+
+                <!-- Median Mode -->
+                <div class="p-5 bg-blue-50 rounded-lg border border-blue-200">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-2">Median (Memory-Safe)</h3>
+                    <p class="text-sm text-gray-700">
+                        Finds the middle pixel value (the median) in the sequence for every location.
+                    </p>
+                    <ul class="list-disc list-inside text-sm text-gray-600 mt-3 ml-2">
+                        <li>**Effect:** Excellent for removing moving objects (people, cars) from a static scene, as they are not present in the median frame. Known as **"Ghost Removal"**.</li>
+                        <li>**Memory:** **Memory-Safe Batching.** The code reads the source multiple times, processing the image in small horizontal strips. This is slower than the other modes but prevents high RAM consumption for long videos.</li>
+						<img src="ex/Median.png" />
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-8 pt-6 border-t border-gray-200 text-center">
+            <p class="text-sm text-gray-500">Frame Conversion Operator | Version 1.0</p>
+        </footer>
+
+    </div>
+</body>
+</html>
