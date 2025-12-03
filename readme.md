@@ -17,8 +17,14 @@ Before running the application, ensure you have the following installed:
 * **Libraries:** You must have the following libraries installed:
 
 ```
-pip install opencv-python numpy
+pip install opencv-python numpy pillow
 ```
+or install with requirements.txt
+```
+pip install -r requirements.txt
+```
+
+
 * **GUI:** The application uses `tkinter`, which is typically included with standard Python installations.
 
 ## 3. Interface Overview
@@ -37,6 +43,12 @@ A value greater than 1 tells the program to skip frames (e.g., skip=5 means only
 
 ## 4. Processing Modes Explained
 
+### Input Video and GIF
+- Nuriho Rocket Launcing (27 Nov, 2025)
+
+- 
+
+
 ### Average
 
 * **Description:** Calculates the mathematical **average** of the color value for every pixel across all processed frames.
@@ -44,6 +56,10 @@ A value greater than 1 tells the program to skip frames (e.g., skip=5 means only
 * **Effect:** Standard long exposure; creates a silky, blurred effect on moving objects (waterfalls, clouds). 
 
 * **Memory:** Low consumption (processes frames incrementally).
+
+* results 
+ <img src = "ex/Avg.png">
+
 
 ### Brightest
 
@@ -53,6 +69,9 @@ A value greater than 1 tells the program to skip frames (e.g., skip=5 means only
 
 * **Memory:** Low consumption (processes frames incrementally).
 
+* results 
+ <img src = "ex/Brightest.png">
+
 ### Darkest
 
 * **Description:** For each pixel location, it keeps the **lowest (darkest)** color value recorded across all frames.
@@ -61,6 +80,10 @@ A value greater than 1 tells the program to skip frames (e.g., skip=5 means only
 
 * **Memory:** Low consumption (processes frames incrementally).
 
+* results 
+ <img src = "ex/darkest.png">
+
+
 ### Median (Memory-Safe)
 
 * **Description:** Finds the middle pixel value (the median) in the sequence for every location.
@@ -68,5 +91,8 @@ A value greater than 1 tells the program to skip frames (e.g., skip=5 means only
 * **Effect:** Excellent for removing moving objects (people, cars) from a static scene, as they are not present in the median frame. Known as **"Ghost Removal"**. 
 
 * **Memory:** **Memory-Safe Batching.** The code reads the source multiple times, processing the image in small horizontal strips. This is slower than the other modes but prevents high RAM consumption for long videos.
+
+* results 
+ <img src = "ex/Median.png">
 
 *Frame Conversion Operator | Version 1.0*
