@@ -48,6 +48,7 @@ A value greater than 1 tells the program to skip frames (e.g., skip=5 means only
 <video width="640" height="480" controls>
    <source src="ex/Nuri.mp4"  type="video/mp4">
 </video>
+
 - Car Crossing (from Google Image) 
  <img src = "ex/carcross.gif">
 
@@ -100,6 +101,7 @@ A value greater than 1 tells the program to skip frames (e.g., skip=5 means only
  <img src = "ex/Median.png">
 
 *Frame Conversion Operator | Version 1.0*
+
 
 
 
