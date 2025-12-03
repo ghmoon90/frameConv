@@ -45,7 +45,7 @@ A value greater than 1 tells the program to skip frames (e.g., skip=5 means only
 
 ### Input Video and GIF
 - Nuriho Rocket Launching (27 Nov, 2025)
-	<video width="400" height="300" controls>
+	<video width="640" height="480" controls>
 		<source src="ex/Nuri.mp4"  type="video/mp4">
 	</video>
 - Car Crossing (from Google Image) 
@@ -100,6 +100,7 @@ A value greater than 1 tells the program to skip frames (e.g., skip=5 means only
  <img src = "ex/Median.png">
 
 *Frame Conversion Operator | Version 1.0*
+
 
 
 
